@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MenuView from "./MenuView.js";
+import logo from "./logo.svg";
+import "./App.css";
+import { useStyles } from "./styles.js";
+import { useTheme } from "@material-ui/core/styles";
+
+class MainApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { cart: [], username: "", tableID: "" };
+    this.handleAddToCart = this.handleAddToCart.bind(this);
+  }
+  handleAddToCart(id) {
+    var cart = this.state.cart;
+    cart.push(id);
+    this.setState({ cart: cart });
+  }
+  render() {
+    return (
+      <MenuView
+        {...this.props}
+        username={this.state.username}
+        handleCartAdd={this.handleAddToCart}
+        cartItems={this.state.cart.length}
+      ></MenuView>
+    );
+  }
+}
 
 function App() {
+  const classes = useStyles();
+  const theme = useTheme();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainApp classes={classes} theme={theme} />
     </div>
   );
 }
