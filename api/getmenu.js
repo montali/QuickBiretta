@@ -3,18 +3,18 @@ module.exports = (req, res) => {
   if (admin.apps.length === 0) {
     admin.initializeApp({
       credential: admin.credential.cert(
-        JSON.parse(Buffer.from(process.env.GOOGLE_JSON, "base64").toString())
+        JSON.parse(Buffer.from(process.env.GCLOUD, "base64").toString())
       ),
     });
   }
 
   let db = admin.firestore();
-  let dbRef = db.collection("tips");
+  let dbRef = db.collection("menu");
   var key = dbRef.doc().id;
 
-  let queryRef = dbRef.where("approved", "==", true).limit(1);
+  //let queryRef = dbRef.where("delivered", "==", false).limit(1);
 
-  let query = queryRef
+  let query = dbRef
     .get()
     .then((snapshot) => {
       if (snapshot.empty) {
