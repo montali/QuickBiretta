@@ -1,5 +1,7 @@
 import React from "react";
 
+import axios from "axios";
+
 import MenuItem from "./MenuItem.js";
 
 import Grid from "@material-ui/core/Grid";
@@ -17,6 +19,26 @@ class MenuList extends React.Component {
   }
 
   render() {
+    let menuItems = [];
+    for (const item in this.props.menu) {
+      menuItems.push(
+        <Grid
+          item
+          xs={10}
+          m={10}
+          className={this.props.classes.fullWidthGridItem}
+        >
+          <MenuItem
+            key={item}
+            id={this.props.menu[item].id}
+            title={this.props.menu[item].name}
+            desc={this.props.menu[item].desc}
+            price={this.props.menu[item].price.toFixed(2)}
+            {...this.props}
+          ></MenuItem>
+        </Grid>
+      );
+    }
     return (
       <Grid
         container
@@ -24,25 +46,7 @@ class MenuList extends React.Component {
         justify="flex-start"
         alignItems="center"
       >
-        <MenuItem
-          title="Birra media"
-          desc="Una gustosa birra media, fresca come il paradiso."
-          price="4.00"
-          {...this.props}
-        ></MenuItem>
-        <MenuItem
-          title="Birra media"
-          desc="Una gustosa birra media, fresca come il paradiso."
-          price="4.00"
-          id="6969"
-          {...this.props}
-        ></MenuItem>
-        <MenuItem
-          title="Birra media"
-          desc="Una gustosa birra media, fresca come il paradiso."
-          price="4.00"
-          {...this.props}
-        ></MenuItem>
+        {menuItems}
       </Grid>
     );
   }

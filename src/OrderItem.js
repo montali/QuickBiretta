@@ -8,15 +8,14 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 
-class MenuItem extends React.Component {
+class OrderItem extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(this.props.id);
     return (
       <Paper>
         <div style={{ margin: "10px" }}>
@@ -29,14 +28,14 @@ class MenuItem extends React.Component {
           variant="contained"
           color="secondary"
           className={this.props.classes.button}
-          startIcon={<AddShoppingCartIcon />}
-          onClick={() => this.props.handleCartAdd(this.props.id)}
+          startIcon={<RemoveShoppingCartIcon />}
+          onClick={() => this.props.handleCartRemove(this.props.index)}
         >
-          €{this.props.price}
+          RIMUOVI
         </Button>
       </Paper>
     );
   }
 }
 
-export default MenuItem;
+export default OrderItem;

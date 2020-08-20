@@ -1,6 +1,6 @@
 import React from "react";
 
-import MenuList from "./MenuList.js";
+import OrderCheck from "./OrderCheck.js";
 
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,10 +11,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
+import CloseIcon from "@material-ui/icons/Close";
 
-class MenuView extends React.Component {
+class OrderView extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -29,28 +29,28 @@ class MenuView extends React.Component {
               className={this.props.classes.menuButton}
               color="inherit"
               aria-label="menu"
-              onClick={() => this.props.handleViewChange("login")}
+              onClick={() => this.props.handleViewChange("menu")}
             >
-              <ExitToAppIcon />
+              <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={this.props.classes.title}>
-              {this.props.username}
+              Riepilogo
             </Typography>
             <Button
               variant="contained"
               color="secondary"
               className={this.props.classes.button}
-              startIcon={<ShoppingCartIcon />}
-              onClick={() => this.props.handleViewChange("order")}
+              startIcon={<DoneOutlineIcon />}
+              onClick={this.props.handleSendOrder}
             >
-              € {this.props.cartTotal.toFixed(2)}
+              CONFERMA
             </Button>
           </Toolbar>
         </AppBar>
-        <MenuList {...this.props} />
+        <OrderCheck {...this.props} />
       </div>
     );
   }
 }
 
-export default MenuView;
+export default OrderView;

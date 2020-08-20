@@ -90,6 +90,29 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "auto",
     display: "block",
   },
+  fullWidthGridItem: {
+    width: "100%",
+  },
+  loginPaper: {
+    width: "80%",
+    height: "40%",
+    margin: "auto",
+  },
+  loginPaperGrid: {
+    width: "100%",
+    height: "100%",
+  },
+  orderNotesTextbox: {
+    width: "75%",
+  },
+  orderCheckTypography: {
+    marginBottom: "0px",
+  },
+  loginDiv: {
+    width: "100vw",
+    height: "100vh",
+    background: "#BD0E35",
+  },
   paper: {
     backgroundColor: theme.palette.text.paper,
   },

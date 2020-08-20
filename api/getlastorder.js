@@ -9,12 +9,15 @@ module.exports = (req, res) => {
       ),
     });
   }
-
   let db = admin.firestore();
-  let dbRef = db.collection("menu");
+  let dbRef = db.collection("order");
   var key = dbRef.doc().id;
-  //let queryRef = dbRef.where("delivered", "==", false).limit(1);
+  if (req.query.delivered) dbRef = dbRef.where("delivered", "==", true);
+  if (req.query.missing) dbRef = dbRef.where("delivered", "==", false);
+
   let query = dbRef
+    .orderBy("datetime", "asc")
+    .limitToLast(1)
     .get()
     .then((snapshot) => {
       let response = [];
