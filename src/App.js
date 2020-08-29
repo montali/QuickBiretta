@@ -52,6 +52,8 @@ class MainApp extends React.Component {
         this.setState({
           snackbarMessage: "Ordine inviato! Grazie🍻",
           view: "menu",
+          cart: [],
+          orderNotes: "",
         });
         this.props.setOpen(true);
       })
