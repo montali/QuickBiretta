@@ -9,5 +9,5 @@ You can find the admin panel [here](https://github.com/montali/manu)
 
 ## TODO
 
-[ ] Add login verification with password
-[ ] Finish this README
+- [ ] Add login verification with password
+- [ ] Finish this README
