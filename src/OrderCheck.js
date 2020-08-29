@@ -49,9 +49,7 @@ class OrderCheck extends React.Component {
         <h2 className={this.props.classes.orderCheckTypography}>
           Note dell'ordine
         </h2>
-        <body>
-          Ricorda di inserire qui eventuali scelte di cocktail e panini🌯
-        </body>
+        <p>Ricorda di inserire qui eventuali scelte di cocktail e panini🌯</p>
         <TextField
           id="standard-multiline-flexible"
           label="Inserisci qui le note"
@@ -64,6 +62,7 @@ class OrderCheck extends React.Component {
         <h2 className={this.props.classes.orderCheckTypography}>
           Contenuto dell'ordine
         </h2>
+        <p>Controlla di non aver dimenticato nulla 🤓</p>
         <Grid
           container
           direction="column"
