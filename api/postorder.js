@@ -11,11 +11,14 @@ module.exports = (req, res) => {
   }
   let db = admin.firestore();
   req.body.delivered = false;
+  var uniqid = require("uniqid");
+  req.body.uuid = uniqid();
   req.body.datetime = admin.firestore.Timestamp.fromDate(new Date());
 
   let addDoc = db
     .collection("order")
-    .add(req.body)
+    .doc(req.body.uuid)
+    .set(req.body)
     .then((ref) => {
       res.status(200).json();
     });
