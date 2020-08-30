@@ -41,7 +41,13 @@ class LoginView extends React.Component {
               <TextField
                 id="standard-basic"
                 label="ID tavolo"
-                name="tableID"
+                name="tableName"
+                onChange={this.props.handleTextFieldChange}
+              />
+              <TextField
+                id="standard-basic"
+                label="Password del tavolo"
+                name="password"
                 onChange={this.props.handleTextFieldChange}
               />
               <TextField

@@ -12,7 +12,7 @@ import LoginView from "./LoginView.js";
 class MainApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { cart: [], username: "", tableID: "", view: "login" };
+    this.state = { cart: [], username: "", tableName: "", view: "login" };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleCartRemove = this.handleCartRemove.bind(this);
     this.updateMenu = this.updateMenu.bind(this);
@@ -21,7 +21,6 @@ class MainApp extends React.Component {
     this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
     this.handleLoginRequest = this.handleLoginRequest.bind(this);
     this.sendOrder = this.sendOrder.bind(this);
-
     this.updateMenu();
   }
   handleNoteChange(event) {
@@ -42,8 +41,9 @@ class MainApp extends React.Component {
     let order = {
       notes: this.state.orderNotes,
       username: this.state.username,
-      table: this.state.tableID,
+      table: this.state.tableName,
       items: this.state.cart,
+      password: this.state.password,
     };
     // Check if the order ain't null
     axios
@@ -67,10 +67,22 @@ class MainApp extends React.Component {
   }
 
   handleLoginRequest() {
-    //if i textbox sono completati e il tavolo esiste (?)
-    this.handleViewChange("menu");
-    this.setState({ snackbarMessage: "Benvenuto!" });
-    this.props.setOpen(true);
+    axios
+      .post("/api/login", {
+        tableName: this.state.tableName,
+        password: this.state.password,
+      })
+      .then((res) => {
+        this.handleViewChange("menu");
+        this.setState({ snackbarMessage: "Benvenuto!" });
+        this.props.setOpen(true);
+      })
+      .catch((error) => {
+        this.setState({
+          snackbarMessage: "Dati errati! Ricontrolla per favore",
+        });
+        this.props.setOpen(true);
+      });
   }
 
   handleTextFieldChange(event) {
@@ -78,6 +90,7 @@ class MainApp extends React.Component {
     const name = target.name;
     const value = event.target.value;
     this.setState({ [name]: value });
+    console.log(this.state);
   }
 
   updateMenu() {
