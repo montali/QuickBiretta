@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loginPaper: {
     width: "80%",
-    height: "40%",
+    height: "60%",
     margin: "auto",
   },
   loginPaperGrid: {

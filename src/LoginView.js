@@ -37,7 +37,9 @@ class LoginView extends React.Component {
               alignItems="center"
               className={this.props.classes.loginPaperGrid}
             >
-              <h2>Entra e ordina</h2>
+              <h2 style={{ marginTop: "10px", marginBottom: "0px" }}>
+                Entra e ordina
+              </h2>
               <TextField
                 id="standard-basic"
                 label="ID tavolo"
