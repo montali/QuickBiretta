@@ -44,18 +44,21 @@ class LoginView extends React.Component {
                 id="standard-basic"
                 label="ID tavolo"
                 name="tableName"
+                style={{ width: "70%" }}
                 onChange={this.props.handleTextFieldChange}
               />
               <TextField
                 id="standard-basic"
                 label="Password del tavolo"
                 name="password"
+                style={{ width: "70%" }}
                 onChange={this.props.handleTextFieldChange}
               />
               <TextField
                 id="standard-basic"
                 label="Il tuo nome"
                 name="username"
+                style={{ width: "70%" }}
                 onChange={this.props.handleTextFieldChange}
               />
               <Button
